@@ -1,0 +1,50 @@
+<!-- ./employee/templates/employee/list.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Lista de Estudiantes</title>
+{% endblock title %}
+
+{% block content %}
+    <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Informacion de Estudiantes</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">CARNE</th>
+                <th scope="col">NAME</th>
+                <th scope="col">DIRECCION</th>
+                <th scope="col">GENERO</th>
+                <th scope="col">TELEFONO</th>
+                <th scope="col">FECHA DE NACIMIENTO</th>
+                <th scope="col">CARRERA</th>
+                <th scope="col">GENERO DE POESIA</th>
+                <th scope="col">FECHA DE INSCRIPCION</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in employees %}
+                <tr>
+                    <th scope="row">{{ emp.carne}}</th>
+                    <td>{{ emp.name }}</td>
+                    <td>{{ emp.direccion }}</td>
+                    <td>{{ emp.genero }}</td>
+                    <td>{{ emp.tel }}</td>
+                    <td>{{ emp.born }}</td>
+                    <td>{{ emp.carrera }}</td>
+                    <td>{{ emp.poesia }}</td>
+                    <td>{{ emp.insc}}</td>
+                    <td>
+                        <a style="margin-right: 30px;" href="">Edit</a>
+                        <a href="">Remove</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <a href="{% url 'form-create' %}"><button type="button" class="btn btn-primary">Agregar Estudiantes</button></a>
+    </div>
+{% endblock content %}
